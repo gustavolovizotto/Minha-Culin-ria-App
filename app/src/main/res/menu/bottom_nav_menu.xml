@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
-        android:icon="@android:drawable/ic_menu_compass"
-        android:title="@string/nav_home" />
+        android:id="@+id/acervoFragment"
+        android:icon="@drawable/ic_nav_acervo"
+        android:title="@string/nav_acervo" />
 
     <item
-        android:id="@+id/receitasFragment"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="@string/nav_receitas" />
+        android:id="@+id/maosNaMassaFragment"
+        android:icon="@drawable/ic_nav_maos_massa"
+        android:title="@string/nav_maos_massa" />
 
     <item
         android:id="@+id/diarioFragment"
-        android:icon="@android:drawable/ic_menu_edit"
+        android:icon="@drawable/ic_nav_diario"
         android:title="@string/nav_diario" />
 
     <item
-        android:id="@+id/categoriasFragment"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="@string/nav_categorias" />
+        android:id="@+id/perfilFragment"
+        android:icon="@drawable/ic_nav_perfil"
+        android:title="@string/nav_perfil" />
 
 </menu>

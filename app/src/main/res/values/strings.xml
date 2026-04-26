@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cofre Gastronômico</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_receitas">Receitas</string>
+    <string name="nav_acervo">Acervo</string>
+    <string name="nav_maos_massa">Mãos na Massa</string>
     <string name="nav_diario">Diário</string>
-    <string name="nav_categorias">Categorias</string>
+    <string name="nav_perfil">Perfil</string>
 </resources>

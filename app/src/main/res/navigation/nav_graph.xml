@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.minhaculinriaapp.ui.home.HomeFragment"
+        android:label="@string/nav_home" />
+
+    <fragment
+        android:id="@+id/receitasFragment"
+        android:name="com.example.minhaculinriaapp.ui.receitas.ReceitasFragment"
+        android:label="@string/nav_receitas" />
+
+    <fragment
+        android:id="@+id/diarioFragment"
+        android:name="com.example.minhaculinriaapp.ui.diario.DiarioFragment"
+        android:label="@string/nav_diario" />
+
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.example.minhaculinriaapp.ui.categorias.CategoriasFragment"
+        android:label="@string/nav_categorias" />
+
+</navigation>

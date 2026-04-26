@@ -7,7 +7,22 @@
     <fragment
         android:id="@+id/acervoFragment"
         android:name="com.example.minhaculinriaapp.ui.acervo.AcervoFragment"
-        android:label="@string/nav_acervo" />
+        android:label="@string/nav_acervo">
+        <action
+            android:id="@+id/action_acervo_to_cadastro_receita"
+            app:destination="@id/cadastroReceitaStep1Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_acervo_to_cadastro_categoria"
+            app:destination="@id/cadastroCategoriaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/maosNaMassaFragment"
@@ -23,5 +38,58 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.minhaculinriaapp.ui.perfil.PerfilFragment"
         android:label="@string/nav_perfil" />
+
+    <!-- Cadastro de Receita: 3 steps -->
+    <fragment
+        android:id="@+id/cadastroReceitaStep1Fragment"
+        android:name="com.example.minhaculinriaapp.ui.cadastro.CadastroReceitaStep1Fragment"
+        android:label="Nova Receita — Passo 1">
+        <action
+            android:id="@+id/action_step1_to_step2"
+            app:destination="@id/cadastroReceitaStep2Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_step1_to_cadastro_categoria"
+            app:destination="@id/cadastroCategoriaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cadastroReceitaStep2Fragment"
+        android:name="com.example.minhaculinriaapp.ui.cadastro.CadastroReceitaStep2Fragment"
+        android:label="Nova Receita — Passo 2">
+        <action
+            android:id="@+id/action_step2_to_step3"
+            app:destination="@id/cadastroReceitaStep3Fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cadastroReceitaStep3Fragment"
+        android:name="com.example.minhaculinriaapp.ui.cadastro.CadastroReceitaStep3Fragment"
+        android:label="Nova Receita — Passo 3">
+        <action
+            android:id="@+id/action_step3_to_acervo"
+            app:destination="@id/acervoFragment"
+            app:popUpTo="@id/acervoFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Cadastro de Categoria -->
+    <fragment
+        android:id="@+id/cadastroCategoriaFragment"
+        android:name="com.example.minhaculinriaapp.ui.cadastro.CadastroCategoriaFragment"
+        android:label="Nova Categoria" />
 
 </navigation>

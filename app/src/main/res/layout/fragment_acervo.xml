@@ -227,6 +227,7 @@
 
                 <!-- Nova Categoria -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_nova_categoria"
                     android:layout_width="0dp"
                     android:layout_height="130dp"
                     android:layout_columnWeight="1"
@@ -634,6 +635,7 @@
 
     <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_nova_receita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Execution Diary - Culinary Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;900&amp;family=Space+Grotesk:wght@500;700&amp;family=Work+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#c8ecc9",
+                        "tertiary-container": "#814408",
+                        "secondary-fixed-dim": "#adcfae",
+                        "on-primary-container": "#ffb8a3",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dcdad4",
+                        "surface": "#fcf9f3",
+                        "background": "#fcf9f3",
+                        "on-primary-fixed-variant": "#7c2d13",
+                        "outline": "#89726c",
+                        "on-primary-fixed": "#3a0a00",
+                        "surface-container": "#f0eee8",
+                        "primary-container": "#8e3a1f",
+                        "on-background": "#1c1c18",
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-secondary-container": "#4c6c50",
+                        "outline-variant": "#dcc1b9",
+                        "surface-tint": "#9b4428",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-secondary-fixed-variant": "#2f4d34",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#31312d",
+                        "secondary": "#47664b",
+                        "tertiary-fixed": "#ffdcc4",
+                        "inverse-primary": "#ffb59f",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f3",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59f",
+                        "tertiary": "#613000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffba85",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#03210c",
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-surface": "#1c1c18",
+                        "primary": "#6f240a",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f6f3ed",
+                        "on-surface-variant": "#55423d",
+                        "secondary-container": "#c8ecc9",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-variant": "#e5e2dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Epilogue"],
+                        "body-lg": ["Work Sans"],
+                        "stats-numeric": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Epilogue"],
+                        "body-md": ["Work Sans"],
+                        "title-sm": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "stats-numeric": ["24px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .vault-inset {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+        .vault-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar from JSON -->
+<header class="flex justify-between items-center w-full px-4 h-16 fixed top-0 z-50 bg-[#FAF9F6] dark:bg-[#1A1A1A] border-b border-[#D2CFC9] dark:border-[#333333] shadow-sm transition-all duration-200">
+<button class="text-[#5A5A5A] dark:text-[#A0A0A0] hover:bg-[#F2F1ED] dark:hover:bg-[#2A2A2A] p-2 rounded-full flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-['Epilogue'] font-bold tracking-tight text-xl font-black text-[#8E3A1F] dark:text-[#E2725B] uppercase tracking-widest">
+            Cofre Gastronômico
+        </h1>
+<button class="text-[#5A5A5A] dark:text-[#A0A0A0] hover:bg-[#F2F1ED] dark:hover:bg-[#2A2A2A] p-2 rounded-full flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="pt-[104px] pb-margin-desktop px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<!-- Header Section -->
+<div class="mb-lg border-b border-outline-variant pb-md flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<div class="flex items-center gap-base mb-xs">
+<span class="font-label-caps text-label-caps bg-secondary-container text-on-secondary-container px-2 py-1 rounded">DIÁRIO DE EXECUÇÃO</span>
+<span class="font-label-caps text-label-caps text-outline">24 OUT 2023</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary">Beef Wellington</h2>
+<p class="font-title-sm text-title-sm text-on-surface-variant mt-2">Tentativa #04 — Domínio da Crosta</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest border border-outline-variant rounded-lg p-sm vault-shadow">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-outline">CLASSIFICAÇÃO GERAL</span>
+<div class="flex text-primary mt-1">
+<span class="material-symbols-outlined text-[24px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-[24px]" data-icon="star_half" data-weight="fill">star_half</span>
+</div>
+</div>
+<div class="w-px h-[40px] bg-outline-variant mx-2"></div>
+<div class="flex flex-col items-center justify-center">
+<span class="font-stats-numeric text-stats-numeric text-primary">9.2</span>
+<span class="font-label-caps text-label-caps text-outline text-[10px]">VAULT SCORE</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Visuals & Metrics (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Final Result Photo -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-xs vault-shadow flex flex-col">
+<div class="relative w-full aspect-[4/5] rounded bg-surface-variant overflow-hidden group">
+<img alt="Beef Wellington" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="close-up cross section of a perfect beef wellington revealing medium rare pink meat, mushroom duxelles, and flaky golden puff pastry on a dark slate board with dramatic warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwp2pVxmo3uxP9mgomQQp0joaCphntc9xFXCLrTHUYOiZ3PZpp0ipX9U73WRw0b8wAkh_l7jEYXxFNcVsQT1L0-58DO82fSLBAtKrGah6coIPhXdmy-m9IE1sZPHqC68Vot38xLxLoSsGKa3Md06bIRqAmgfKXZjKfRjFIrXV2ls0ycFP1FNs0pkt2gYTyLhMS9ANYF2UKqLc5ptpZdhS3KeAGUtqKNoo74UR8E0g1M2EJ-qmjZ1_IUoe_w7qV7BRBPNO8s8g8J2g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c1c18]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-md">
+<button class="bg-surface text-primary font-label-caps text-label-caps px-4 py-2 rounded flex items-center gap-2 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_a_photo">add_a_photo</span>
+                                ATUALIZAR FOTO
+                            </button>
+</div>
+</div>
+</div>
+<!-- Critical Variables (Inset Ledger Style) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md vault-shadow">
+<h3 class="font-title-sm text-title-sm text-primary mb-md flex items-center gap-2 border-b border-outline-variant pb-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="thermostat">thermostat</span>
+                        Variáveis Técnicas
+                    </h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center bg-surface-variant vault-inset rounded p-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TEMPERATURA INTERNA ALVO</span>
+<span class="font-stats-numeric text-stats-numeric text-primary">54°C</span>
+</div>
+<div class="flex justify-between items-center bg-surface-variant vault-inset rounded p-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TEMPO DE REPOUSO</span>
+<span class="font-stats-numeric text-stats-numeric text-primary">15 MIN</span>
+</div>
+<div class="flex justify-between items-center bg-surface-variant vault-inset rounded p-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ESPESSURA DA MASSA</span>
+<span class="font-stats-numeric text-stats-numeric text-primary">3 MM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Column: Qualitative Notes (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Execution Notes (The Ledger) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg vault-shadow h-full flex flex-col">
+<div class="flex justify-between items-center border-b border-outline-variant pb-sm mb-md">
+<h3 class="font-headline-md text-headline-md text-primary">Anotações do Chef</h3>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="flex-grow flex flex-col gap-md">
+<!-- Successes -->
+<div>
+<div class="flex items-center gap-2 mb-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-caps text-label-caps">O QUE FUNCIONOU</span>
+</div>
+<div class="bg-surface-variant vault-inset rounded p-md font-body-md text-body-md text-on-surface min-h-[100px]">
+                                O selamento inicial da carne foi perfeito. Usar a frigideira de ferro fundido em temperatura máxima (fumaça branca) garantiu uma crosta fina e evitou o anel cinza. O tempo de geladeira (2 horas) firmou o conjunto maravilhosamente antes de assar.
+                            </div>
+</div>
+<!-- Improvements -->
+<div>
+<div class="flex items-center gap-2 mb-2 text-surface-tint">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="font-label-caps text-label-caps">PONTOS DE MELHORIA</span>
+</div>
+<div class="bg-surface-variant vault-inset rounded p-md font-body-md text-body-md text-on-surface min-h-[120px] relative">
+                                O Duxelles ainda liberou umidade residual na base da massa. A crosta inferior ficou levemente empapada.
+                                <br/><br/>
+<span class="font-label-caps text-label-caps text-outline">AÇÃO FUTURA:</span><br/>
+                                Na próxima execução, cozinhar os cogumelos até secarem completamente e adicionar 1 colher de chá de farinha de rosca fina para absorver eventuais sucos durante o cozimento.
+                                
+                                <div class="absolute bottom-2 right-2 text-outline-variant">
+<span class="material-symbols-outlined text-[48px] opacity-20" data-icon="ink_pen">ink_pen</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-end">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 rounded border-t border-[rgba(255,255,255,0.2)] shadow-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="save">save</span>
+                            SALVAR REGISTRO
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Progress Timeline (3 cols) -->
+<div class="lg:col-span-3 flex flex-col">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-md vault-shadow h-full">
+<h3 class="font-title-sm text-title-sm text-primary mb-lg border-b border-outline-variant pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+                        Evolução
+                    </h3>
+<div class="relative pl-6 border-l-2 border-outline-variant space-y-xl pb-md">
+<!-- Current Attempt -->
+<div class="relative">
+<div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-surface-container-low shadow-sm"></div>
+<span class="font-label-caps text-label-caps text-primary bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-sm inline-block mb-1">ATUAL • TENTATIVA #04</span>
+<div class="font-body-md text-body-md text-on-background font-medium">Domínio da Crosta</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">24 OUT 2023</div>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-stats-numeric text-[14px] leading-none">9.2</span>
+</div>
+</div>
+<!-- Previous Attempt #3 -->
+<div class="relative opacity-70 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface-container-low group-hover:bg-primary transition-colors"></div>
+<span class="font-label-caps text-label-caps text-outline inline-block mb-1 group-hover:text-primary transition-colors">TENTATIVA #03</span>
+<div class="font-body-md text-body-md text-on-surface-variant">Ajuste de Temperatura</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">15 SET 2023</div>
+<div class="flex items-center gap-1 mt-2 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-stats-numeric text-[14px] leading-none">8.5</span>
+</div>
+</div>
+<!-- Previous Attempt #2 -->
+<div class="relative opacity-60 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface-container-low group-hover:bg-primary transition-colors"></div>
+<span class="font-label-caps text-label-caps text-outline inline-block mb-1 group-hover:text-primary transition-colors">TENTATIVA #02</span>
+<div class="font-body-md text-body-md text-on-surface-variant">Primeira Versão com Duxelles</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">02 AGO 2023</div>
+<div class="flex items-center gap-1 mt-2 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-stats-numeric text-[14px] leading-none">7.0</span>
+</div>
+</div>
+<!-- Previous Attempt #1 -->
+<div class="relative opacity-50 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-outline-variant border-4 border-surface-container-low group-hover:bg-primary transition-colors"></div>
+<span class="font-label-caps text-label-caps text-outline inline-block mb-1 group-hover:text-primary transition-colors">TENTATIVA #01</span>
+<div class="font-body-md text-body-md text-on-surface-variant">O Desastre da Massa Crua</div>
+<div class="font-label-caps text-label-caps text-outline mt-1">10 JUL 2023</div>
+<div class="flex items-center gap-1 mt-2 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span>
+<span class="font-stats-numeric text-[14px] leading-none">4.5</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-md py-2 border border-outline-variant rounded font-label-caps text-label-caps text-outline hover:bg-surface hover:text-primary transition-colors flex items-center justify-center gap-2">
+                        VER TODAS AS NOTAS
+                        <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

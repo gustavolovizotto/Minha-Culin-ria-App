@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cofre Gastronômico - Sourdough Bread</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;900&amp;family=Work+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#c8ecc9",
+                      "tertiary-container": "#814408",
+                      "secondary-fixed-dim": "#adcfae",
+                      "on-primary-container": "#ffb8a3",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#dcdad4",
+                      "surface": "#fcf9f3",
+                      "background": "#fcf9f3",
+                      "on-primary-fixed-variant": "#7c2d13",
+                      "outline": "#89726c",
+                      "on-primary-fixed": "#3a0a00",
+                      "surface-container": "#f0eee8",
+                      "primary-container": "#8e3a1f",
+                      "on-background": "#1c1c18",
+                      "inverse-on-surface": "#f3f0ea",
+                      "on-secondary-container": "#4c6c50",
+                      "outline-variant": "#dcc1b9",
+                      "surface-tint": "#9b4428",
+                      "surface-container-highest": "#e5e2dc",
+                      "on-secondary-fixed-variant": "#2f4d34",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#31312d",
+                      "secondary": "#47664b",
+                      "tertiary-fixed": "#ffdcc4",
+                      "inverse-primary": "#ffb59f",
+                      "primary-fixed": "#ffdbd0",
+                      "tertiary-fixed-dim": "#ffb780",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#fcf9f3",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#ffb59f",
+                      "tertiary": "#613000",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#ffba85",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#03210c",
+                      "on-tertiary-fixed": "#2f1400",
+                      "on-surface": "#1c1c18",
+                      "primary": "#6f240a",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f6f3ed",
+                      "on-surface-variant": "#55423d",
+                      "secondary-container": "#c8ecc9",
+                      "on-tertiary-fixed-variant": "#6f3800",
+                      "surface-container-high": "#ebe8e2",
+                      "surface-variant": "#e5e2dc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "48px",
+                      "sm": "12px",
+                      "xl": "80px",
+                      "margin-desktop": "64px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Epilogue"
+                      ],
+                      "body-lg": [
+                              "Work Sans"
+                      ],
+                      "stats-numeric": [
+                              "Space Grotesk"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Epilogue"
+                      ],
+                      "body-md": [
+                              "Work Sans"
+                      ],
+                      "title-sm": [
+                              "Epilogue"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "stats-numeric": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for horizontal sections */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- Contextual Detail Header (Suppressed global nav for focused view) -->
+<header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant h-16 flex items-center justify-between px-margin-mobile md:px-margin-desktop">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors text-on-background">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-title-sm text-title-sm text-primary truncate max-w-[200px] md:max-w-md">
+            Sourdough Bread
+        </div>
+<div class="flex items-center gap-xs">
+<button aria-label="Bookmark recipe" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors text-on-background">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+<button aria-label="More options" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors text-on-background">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-md md:py-lg flex flex-col gap-lg">
+<!-- Hero Section -->
+<section class="flex flex-col gap-md">
+<div class="w-full h-64 md:h-96 rounded-xl overflow-hidden relative shadow-sm border border-outline-variant">
+<img alt="Artisan sourdough bread" class="w-full h-full object-cover" data-alt="close-up of freshly baked artisan sourdough bread with rustic crust on dark slate surface with dramatic natural side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY78JczGehjXW8v2_JJCtzf_tUmI3v5wHd9-_gN9U1co9s_fUv6BHxF98CH60WXREUVbbR9ZOXpK_QON3ajMyzXGOqYhp0RZvl-BeogUY8MnqtfFukE_9v3HWlmPb8j3No91Pjewzq4UrnG-6zS-X3BXl9lalNzIhq0Yhc0IlB_ViFAZZkmsChrf_SEZNJd8mvt-_VjXVTPD9F8tz3TvqHJuCilLCtUz3qU8K_5i1Wr8hErsBtqjrUh_OYxxhdk1yU1kZITago5Yo"/>
+<div class="absolute bottom-0 left-0 w-full p-md bg-gradient-to-t from-black/60 to-transparent">
+<span class="bg-surface/90 text-on-surface px-sm py-xs rounded-full font-label-caps text-label-caps border border-outline-variant inline-flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="category">category</span>
+                        Baking
+                    </span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div class="flex flex-col gap-sm">
+<h1 class="font-display-lg text-display-lg text-on-background">Sourdough Bread</h1>
+<div class="flex flex-wrap items-center gap-sm md:gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-primary icon-fill" data-icon="star">star</span>
+<span class="font-stats-numeric text-stats-numeric text-on-background">4.9</span>
+<span class="font-body-md text-body-md">(12 Executions)</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline"></div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<span class="font-body-md text-body-md"><span class="font-stats-numeric text-[18px]">24</span>h <span class="font-stats-numeric text-[18px]">30</span>m</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-outline"></div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span>
+<span class="font-body-md text-body-md">Advanced</span>
+</div>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full md:w-auto bg-primary text-on-primary px-lg py-md rounded-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_2px_4px_rgba(0,0,0,0.1)] hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Start Mãos na Massa Mode</span>
+</button>
+</div>
+</section>
+<hr class="border-t border-outline-variant"/>
+<!-- Two Column Layout for Desktop -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Ingredients (Vault Inset Style) -->
+<aside class="lg:col-span-4 flex flex-col gap-md">
+<div class="bg-surface-container rounded-xl p-md md:p-lg border border-outline-variant shadow-[inset_0_2px_10px_rgba(0,0,0,0.05)]">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-on-background">Ingredients</h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface px-sm py-xs rounded border border-outline-variant">Yields: 1 Loaf</span>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Ingredient Item -->
+<label class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center w-6 h-6 mt-1">
+<input class="peer appearance-none w-5 h-5 border-2 border-outline rounded-sm checked:bg-primary checked:border-primary transition-colors cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Active Sourdough Starter</span>
+<span class="font-stats-numeric text-[16px] text-on-surface-variant">100g</span>
+</div>
+</label>
+<!-- Ingredient Item -->
+<label class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center w-6 h-6 mt-1">
+<input class="peer appearance-none w-5 h-5 border-2 border-outline rounded-sm checked:bg-primary checked:border-primary transition-colors cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Bread Flour</span>
+<span class="font-stats-numeric text-[16px] text-on-surface-variant">400g</span>
+</div>
+</label>
+<!-- Ingredient Item -->
+<label class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center w-6 h-6 mt-1">
+<input class="peer appearance-none w-5 h-5 border-2 border-outline rounded-sm checked:bg-primary checked:border-primary transition-colors cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Whole Wheat Flour</span>
+<span class="font-stats-numeric text-[16px] text-on-surface-variant">100g</span>
+</div>
+</label>
+<!-- Ingredient Item -->
+<label class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center w-6 h-6 mt-1">
+<input class="peer appearance-none w-5 h-5 border-2 border-outline rounded-sm checked:bg-primary checked:border-primary transition-colors cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Water (Room Temp)</span>
+<span class="font-stats-numeric text-[16px] text-on-surface-variant">350g</span>
+</div>
+</label>
+<!-- Ingredient Item -->
+<label class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center w-6 h-6 mt-1">
+<input class="peer appearance-none w-5 h-5 border-2 border-outline rounded-sm checked:bg-primary checked:border-primary transition-colors cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-on-background group-hover:text-primary transition-colors">Fine Sea Salt</span>
+<span class="font-stats-numeric text-[16px] text-on-surface-variant">10g</span>
+</div>
+</label>
+</div>
+</div>
+</aside>
+<!-- Right Column: Steps & History -->
+<div class="lg:col-span-8 flex flex-col gap-xl">
+<!-- Steps Section (Ledger Style) -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-background mb-md">Steps</h2>
+<div class="flex flex-col">
+<!-- Step 1 -->
+<div class="flex gap-md py-md border-t border-outline-variant">
+<div class="font-stats-numeric text-[32px] text-primary/40 leading-none">01</div>
+<div class="flex flex-col gap-sm flex-grow">
+<h3 class="font-title-sm text-title-sm text-on-background">Autolyse</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">In a large bowl, mix the bread flour, whole wheat flour, and 350g of water until a shaggy dough forms. Cover with a damp towel and let it rest for 1 hour.</p>
+<div class="inline-flex items-center gap-xs bg-surface-variant text-on-surface-variant px-sm py-xs rounded w-fit mt-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span class="font-stats-numeric text-[14px]">1:00:00</span>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-md py-md border-t border-outline-variant">
+<div class="font-stats-numeric text-[32px] text-primary/40 leading-none">02</div>
+<div class="flex flex-col gap-sm flex-grow">
+<h3 class="font-title-sm text-title-sm text-on-background">Incorporate Starter &amp; Salt</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Add the active starter and salt to the dough. Dimple them in with your fingers, then perform a series of slap and folds for about 5 minutes until the dough becomes smoother and cohesive.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-md py-md border-t border-outline-variant">
+<div class="font-stats-numeric text-[32px] text-primary/40 leading-none">03</div>
+<div class="flex flex-col gap-sm flex-grow">
+<h3 class="font-title-sm text-title-sm text-on-background">Bulk Fermentation (Stretch &amp; Folds)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Transfer to a clean container. Over the next 4 hours, perform 4 sets of stretch and folds, spaced 45 minutes apart. The dough should become bubbly and increase in volume by 30-50%.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Execution History Section -->
+<section class="bg-surface rounded-xl p-md md:p-lg border border-outline-variant shadow-sm relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute -right-10 -top-10 text-outline-variant/20 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="history">history</span>
+</div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h2 class="font-headline-md text-headline-md text-on-background flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+                            Execution History
+                        </h2>
+<button class="text-primary hover:underline font-label-caps text-label-caps">View All</button>
+</div>
+<!-- Horizontal Scroll Cards -->
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-xs relative z-10 snap-x">
+<!-- History Card -->
+<div class="min-w-[240px] bg-surface-container rounded-lg p-md border border-outline-variant snap-start flex flex-col gap-xs">
+<div class="flex justify-between items-center text-on-surface-variant mb-xs">
+<span class="font-stats-numeric text-[14px]">Oct 12, 2023</span>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[16px] icon-fill" data-icon="star">star</span>
+<span class="font-stats-numeric text-[14px] ml-1">5.0</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-background line-clamp-2">"Perfect oven spring. Used a bit more whole wheat this time. Crumb was open and light."</p>
+<div class="mt-auto pt-sm border-t border-outline-variant flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">Notes Added</span>
+</div>
+</div>
+<!-- History Card -->
+<div class="min-w-[240px] bg-surface-container rounded-lg p-md border border-outline-variant snap-start flex flex-col gap-xs">
+<div class="flex justify-between items-center text-on-surface-variant mb-xs">
+<span class="font-stats-numeric text-[14px]">Sep 28, 2023</span>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[16px] icon-fill" data-icon="star">star</span>
+<span class="font-stats-numeric text-[14px] ml-1">4.5</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-background line-clamp-2">"Starter was slightly sluggish. Bulk fermentation took 1 hour longer than expected."</p>
+</div>
+<!-- History Card -->
+<div class="min-w-[240px] bg-surface-container rounded-lg p-md border border-outline-variant snap-start flex flex-col gap-xs opacity-60">
+<div class="flex justify-between items-center text-on-surface-variant mb-xs">
+<span class="font-stats-numeric text-[14px]">Aug 15, 2023</span>
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[16px] icon-fill" data-icon="star">star</span>
+<span class="font-stats-numeric text-[14px] ml-1">4.0</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-background line-clamp-2">"First attempt. Shaping needs work, spread a bit in the oven, but tasted great."</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

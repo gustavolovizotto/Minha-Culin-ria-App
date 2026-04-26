@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minha Culinária - Acervo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700&amp;family=Work+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#c8ecc9",
+                        "tertiary-container": "#814408",
+                        "secondary-fixed-dim": "#adcfae",
+                        "on-primary-container": "#ffb8a3",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dcdad4",
+                        "surface": "#fcf9f3",
+                        "background": "#fcf9f3",
+                        "on-primary-fixed-variant": "#7c2d13",
+                        "outline": "#89726c",
+                        "on-primary-fixed": "#3a0a00",
+                        "surface-container": "#f0eee8",
+                        "primary-container": "#8e3a1f",
+                        "on-background": "#1c1c18",
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-secondary-container": "#4c6c50",
+                        "outline-variant": "#dcc1b9",
+                        "surface-tint": "#9b4428",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-secondary-fixed-variant": "#2f4d34",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#31312d",
+                        "secondary": "#47664b",
+                        "tertiary-fixed": "#ffdcc4",
+                        "inverse-primary": "#ffb59f",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f3",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59f",
+                        "tertiary": "#613000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffba85",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#03210c",
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-surface": "#1c1c18",
+                        "primary": "#6f240a",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f6f3ed",
+                        "on-surface-variant": "#55423d",
+                        "secondary-container": "#c8ecc9",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-variant": "#e5e2dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Epilogue"],
+                        "body-lg": ["Work Sans"],
+                        "stats-numeric": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Epilogue"],
+                        "body-md": ["Work Sans"],
+                        "title-sm": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "stats-numeric": ["24px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .vault-card {
+            border: 1px solid theme('colors.outline-variant');
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            background-color: theme('colors.surface-container-lowest');
+        }
+        .vault-inset {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid theme('colors.outline-variant');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen pb-24 md:pb-0 pt-16 md:pt-24 flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 md:px-margin-desktop h-16 fixed top-0 z-50 bg-[#FAF9F6] dark:bg-[#1A1A1A] border-b border-[#D2CFC9] dark:border-[#333333] shadow-sm">
+<button class="text-[#5A5A5A] dark:text-[#A0A0A0] hover:bg-[#F2F1ED] dark:hover:bg-[#2A2A2A] transition-all duration-200 active:scale-95 p-2 rounded-full md:hidden">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="hidden md:flex flex-1 items-center gap-6 h-full">
+<span class="text-[#8E3A1F] dark:text-[#E2725B] font-['Epilogue'] font-bold tracking-tight text-xl">Minha Culinária</span>
+<nav class="flex h-full ml-8 gap-4">
+<a class="text-[#8E3A1F] dark:text-[#E2725B] font-['Epilogue'] font-bold flex items-center h-full border-b-2 border-[#8E3A1F] px-2 transition-all duration-200 active:scale-95" href="#">Acervo</a>
+<a class="text-[#5A5A5A] dark:text-[#A0A0A0] font-['Epilogue'] flex items-center h-full hover:text-[#8E3A1F] dark:hover:text-[#E2725B] px-2 transition-all duration-200 active:scale-95" href="#">Mãos na Massa</a>
+<a class="text-[#5A5A5A] dark:text-[#A0A0A0] font-['Epilogue'] flex items-center h-full hover:text-[#8E3A1F] dark:hover:text-[#E2725B] px-2 transition-all duration-200 active:scale-95" href="#">Diário</a>
+</nav>
+</div>
+<div class="flex items-center md:hidden flex-1 justify-center">
+<span class="text-[#8E3A1F] dark:text-[#E2725B] font-['Epilogue'] font-bold tracking-tight text-lg">Minha Culinária</span>
+</div>
+<div class="flex justify-end md:flex-none">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant">
+<img alt="Chef Profile" class="w-full h-full object-cover" data-alt="professional chef portrait in natural lighting slightly out of focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH_BI91nq6u2dvDwPxfqGwH1W39R3zIPa_B--atedJMuCT6YVsDi3buqXxjbFxA43f_4rjkQpVPcaP6GniQeJH_IFbzWaaMiWHXV5dlNqFu9V2jeQGmyP_4PTTC_L5VAxf2Mmwvvk7Sdf9US-PCEQxBF0FmsJEogNqwdaH3LjX2bklui7ykB77zWZY5Tv_-H2lhFP3Te0oGhu-FZfZ2sZ3Bpt4EDKF-2MtQCWbd3iUaNF_EJ2PtqtUgoOPutRp-DCH63lgyrKVQr4"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[1440px] px-margin-mobile md:px-margin-desktop flex flex-col gap-lg">
+<!-- Search Section -->
+<section class="w-full max-w-2xl mx-auto mt-md">
+<div class="relative w-full h-14 vault-inset bg-surface-container rounded-DEFAULT flex items-center px-4 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-body-md text-on-surface placeholder-outline h-full" placeholder="Buscar no acervo..." type="text"/>
+<button class="p-2 text-outline hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Categorias Essenciais</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
+<!-- Category Card 1 -->
+<div class="vault-card rounded-lg overflow-hidden group cursor-pointer relative h-32 md:h-48 flex flex-col justify-end p-4">
+<div class="absolute inset-0 z-0">
+<img alt="Italian" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close up of fresh handmade pasta twirled elegantly on a rustic wooden board dusted with flour dramatic top down lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOtV9Zf1TXo13q0cGmDy_i8oRUbq5bOSwbjyTjKsazOhhv2GAJBJaya7NvThQ0fO1HeLf3rArLp4JGoqO0VDDVEf7gRON-Vk3Q3QqUhcIAmy_f-Td83TIrDeVLdUjnXOD107P1RitH68c13nBJdDT1-He4MrmQo_XirJ0C17VADiOXYcF_Vyc44snrRp_aoZ2WXP9HAIQV3BbDQm6syv7ZgYfBAtDFBu9xPT6GMeuI0jTbvg-Irne299G2Ry_Bhg8SOy7cJlFJOAU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex justify-between items-end">
+<span class="font-label-caps text-label-caps text-on-secondary uppercase">Italiana</span>
+<span class="font-stats-numeric text-stats-numeric text-secondary-fixed">24</span>
+</div>
+</div>
+<!-- Category Card 2 -->
+<div class="vault-card rounded-lg overflow-hidden group cursor-pointer relative h-32 md:h-48 flex flex-col justify-end p-4">
+<div class="absolute inset-0 z-0">
+<img alt="Pastries" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="artisan sourdough bread loaf on dark slate background dramatic side lighting highlighting the crust texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLVhhxu1N9yHpbrqyCBPed79Du5U68ZLMcox3svX6aTnxD4qHefV3ck67A4zJpB8VbchCZQKMKX4v06O5p-xnzVOq7Fix0JP5GUOK7uoWNzqA09aGF7go68Wg_w_v9eQ1wkkPMUOK7Kl0pWyKE4aOVCiuoD-I0MrvmyQIM9NLE4guSUiNKmZOGEt5TbwUOCJ0eeHfTOvUpGSfpKghFNDqcGVn1MXr3TC4VYHZM-nHtay9FzOq8Sehe1-lG59cq0lDaPc465-IpKWw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex justify-between items-end">
+<span class="font-label-caps text-label-caps text-on-secondary uppercase">Panificação</span>
+<span class="font-stats-numeric text-stats-numeric text-secondary-fixed">18</span>
+</div>
+</div>
+<!-- Category Card 3 -->
+<div class="vault-card rounded-lg overflow-hidden group cursor-pointer relative h-32 md:h-48 flex flex-col justify-end p-4">
+<div class="absolute inset-0 z-0">
+<img alt="Roasts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="perfectly roasted prime rib carved on a thick wooden cutting board rich brown crust and pink center warm ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa65SfjK54Xl_J5FaznOZxWpmw1a04_Wmx8AjjCFC_tpUtg4sVDublYjAOe91N2V7rYTy5xrtmrLJrCXJZOVwl0too2yz7yQEYWThyfnMncFGJ6ntPDrQ_DMEHwzyPanJSeI1-4gjS50bVbXNFUnXXQ9ePito98v6sCRzmvO5iw0eJwLg4onDcIboy4V7P_wyXOsHm4wmqUzcXZOmTvCeySlpUPXHRHD4gCWlEUCyu9N5u1sU1dlY396XdzHgCd27KWnZIa81PB7w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex justify-between items-end">
+<span class="font-label-caps text-label-caps text-on-secondary uppercase">Assados</span>
+<span class="font-stats-numeric text-stats-numeric text-secondary-fixed">12</span>
+</div>
+</div>
+<!-- Category Card 4 -->
+<div class="vault-card rounded-lg overflow-hidden group cursor-pointer relative h-32 md:h-48 flex flex-col justify-end p-4 bg-surface-container-high flex items-center justify-center border-dashed border-outline">
+<span class="material-symbols-outlined text-outline text-3xl mb-2" data-icon="add_circle">add_circle</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase text-center">Nova<br/>Categoria</span>
+</div>
+</div>
+</section>
+<!-- Recent / Favorites Section -->
+<section class="mb-lg">
+<div class="flex justify-between items-end mb-md border-b border-outline-variant pb-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Descobertas Recentes</h2>
+<a class="font-label-caps text-label-caps text-primary-container uppercase hover:underline" href="#">Ver Todas</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Recipe Card 1 -->
+<article class="vault-card rounded-lg flex flex-col overflow-hidden group cursor-pointer">
+<div class="h-48 relative overflow-hidden">
+<img alt="Recipe Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="gourmet plated dish featuring seared scallops with vibrant green pea puree microgreens clean white ceramic plate top down view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuVg6olqpYGP3L79lq6CokR7VfxQF1RipwC12EGEnuhEVeJuiDlv8iNX0dM0zrP8nvsTeXag5zMMJ2R_uNtw1KFYKi3c6MsiL7T-kAegQUBQBxLZpYnGO1PIfbnobIfYOx7gZRm06VAtX-ALy95pbKSjE8snBqhGZwsSZBxrTM8CJT71VaGwXW79pqG85a_mhAniVPp8SiotUQbcvbDTEgcorq9eHQA3WGtCahynGqU3VCmtlvtaCZ9efwAnjTIdW9ha5n8ONyxV0"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm rounded-full p-1.5 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="bookmark" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2 bg-surface-container-lowest">
+<div class="flex gap-2 mb-1">
+<span class="px-2 py-1 bg-secondary/10 text-secondary font-label-caps text-[10px] rounded uppercase">Frutos do Mar</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] rounded uppercase">Avançado</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface line-clamp-2">Vieiras Seladas com Purê de Ervilhas e Hortelã</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 text-sm">Uma entrada delicada que equilibra a doçura do marisco com o frescor das ervas, técnica clássica francesa.</p>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-outline">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-stats-numeric text-sm">45m</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-stats-numeric text-sm">4 Porções</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Recipe Card 2 -->
+<article class="vault-card rounded-lg flex flex-col overflow-hidden group cursor-pointer">
+<div class="h-48 relative overflow-hidden">
+<img alt="Recipe Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="rich dark chocolate tart with a shiny ganache glaze on a rustic wooden table scattered with cocoa powder moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy5ttXp8-cJnJC3jdMWCNNV0ZrmwFjfm-OgZbBM_zNJtlfcw5pAfp9_ElkQVJjRaGogxSCu3UxZSNrPNy-Ymv32ZZGWiO6I8u9UbRPHYgpT1leHpt6Bw941wZBjeXWTzRXDj96ZozuTz-Q4QUGTr5G-MMTPz2zZERQVNsKLUzoyWVIt7mnCVzp7_5D9ZW-zUuDZzP5c21ZtEENhbraI2ebwuNsPm8iihqhk6F2HclbnsbxRgLWDEcc3O9t3mNUjDsbrj7Oekjvcwg"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm rounded-full p-1.5 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2 bg-surface-container-lowest">
+<div class="flex gap-2 mb-1">
+<span class="px-2 py-1 bg-secondary/10 text-secondary font-label-caps text-[10px] rounded uppercase">Sobremesa</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] rounded uppercase">Intermediário</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface line-clamp-2">Tartelete de Chocolate Amargo e Flor de Sal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 text-sm">A combinação perfeita entre o amargor do cacau 70% e cristais de sal marinho em uma massa sablée crocante.</p>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-outline">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-stats-numeric text-sm">2h 15m</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-stats-numeric text-sm">8 Fatias</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Recipe Card 3 -->
+<article class="vault-card rounded-lg flex flex-col overflow-hidden group cursor-pointer">
+<div class="h-48 relative overflow-hidden">
+<img alt="Recipe Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="slow roasted pork belly with incredibly crispy crackling skin sitting in a pool of dark rich jus professional food photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeUH715DHlgTYZJaAsbZrM6svmg9qo7IgTzldnluUMMAkzp6MkYdRj-5Tz2yyCGRknbfFmi9w8Yyd9JY_HC6-3uIQjZkxp0HlZ9KFhIaDQ8f1Wkes6L4XaaghFnSBtkhm5PLvcyr_zoMHR6XiEx7H3XisK0631DlWV3j6ZIaOdL7YYZn6CT2MnYQfKh0yMCsxZpkYQYZe6tbAdUvJe4Lys7EWEiRUhg7aatcIJDE-RRLFk_DBtHO9Z27yh8q4BvzsYYApyldhZKiI"/>
+<div class="absolute top-3 right-3 bg-surface/90 backdrop-blur-sm rounded-full p-1.5 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="bookmark">bookmark</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2 bg-surface-container-lowest">
+<div class="flex gap-2 mb-1">
+<span class="px-2 py-1 bg-secondary/10 text-secondary font-label-caps text-[10px] rounded uppercase">Assados</span>
+<span class="px-2 py-1 bg-surface-variant text-on-surface-variant font-label-caps text-[10px] rounded uppercase">Mestre</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface line-clamp-2">Panceta Pururuca Glaceada no Demi-Glace</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 text-sm">Preparação de 48 horas garantindo uma pele perfeitamente vítrea e carne desmanchando, um clássico dos assados.</p>
+<div class="mt-4 pt-3 border-t border-outline-variant flex justify-between items-center text-outline">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="font-stats-numeric text-sm">48h</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-stats-numeric text-sm">6 Porções</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Floating Action Button (FAB) for adding new recipe - visible on Acervo main screen -->
+<button class="fixed bottom-24 md:bottom-8 right-4 md:right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-md hover:bg-surface-tint hover:shadow-lg transition-all z-40 border-t border-white/20">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 bg-opacity-95 backdrop-blur-md bg-[#FAF9F6] dark:bg-[#1A1A1A] border-t border-[#D2CFC9] dark:border-[#333333] shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#8E3A1F] dark:text-[#E2725B] border-t-2 border-[#8E3A1F] pt-2 w-16 h-full transition-transform active:scale-90 hover:text-[#8E3A1F] dark:hover:text-[#E2725B]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shelves" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shelves</span>
+<span class="font-['Epilogue'] text-[10px] font-semibold uppercase tracking-tighter">Acervo</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#A8A29E] dark:text-[#666666] pt-2 w-16 h-full transition-transform active:scale-90 hover:text-[#8E3A1F] dark:hover:text-[#E2725B] border-t-2 border-transparent" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant">restaurant</span>
+<span class="font-['Epilogue'] text-[10px] font-semibold uppercase tracking-tighter">Mãos na Massa</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#A8A29E] dark:text-[#666666] pt-2 w-16 h-full transition-transform active:scale-90 hover:text-[#8E3A1F] dark:hover:text-[#E2725B] border-t-2 border-transparent" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-['Epilogue'] text-[10px] font-semibold uppercase tracking-tighter">Diário</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#A8A29E] dark:text-[#666666] pt-2 w-16 h-full transition-transform active:scale-90 hover:text-[#8E3A1F] dark:hover:text-[#E2725B] border-t-2 border-transparent" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Epilogue'] text-[10px] font-semibold uppercase tracking-tighter">Perfil</span>
+</a>
+</nav>
+</body></html>

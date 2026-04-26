@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mãos na Massa - Minha Culinária</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Work+Sans:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#c8ecc9",
+                        "tertiary-container": "#814408",
+                        "secondary-fixed-dim": "#adcfae",
+                        "on-primary-container": "#ffb8a3",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dcdad4",
+                        "surface": "#fcf9f3",
+                        "background": "#fcf9f3",
+                        "on-primary-fixed-variant": "#7c2d13",
+                        "outline": "#89726c",
+                        "on-primary-fixed": "#3a0a00",
+                        "surface-container": "#f0eee8",
+                        "primary-container": "#8e3a1f",
+                        "on-background": "#1c1c18",
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-secondary-container": "#4c6c50",
+                        "outline-variant": "#dcc1b9",
+                        "surface-tint": "#9b4428",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-secondary-fixed-variant": "#2f4d34",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#31312d",
+                        "secondary": "#47664b",
+                        "tertiary-fixed": "#ffdcc4",
+                        "inverse-primary": "#ffb59f",
+                        "primary-fixed": "#ffdbd0",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f3",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59f",
+                        "tertiary": "#613000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffba85",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#03210c",
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-surface": "#1c1c18",
+                        "primary": "#6f240a",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f6f3ed",
+                        "on-surface-variant": "#55423d",
+                        "secondary-container": "#c8ecc9",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-variant": "#e5e2dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Epilogue"],
+                        "body-lg": ["Work Sans"],
+                        "stats-numeric": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Epilogue"],
+                        "body-md": ["Work Sans"],
+                        "title-sm": ["Epilogue"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "stats-numeric": ["24px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "title-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .vault-inset {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .vault-shadow {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar (Hidden on desktop for focus mode, visible on mobile if needed, but per prompt, we optimize for kitchen use. Let's keep a simplified version for context) -->
+<header class="bg-[#FAF9F6] text-[#8E3A1F] font-['Epilogue'] font-bold tracking-tight docked full-width top-0 border-b border-b border-[#D2CFC9] shadow-sm flex justify-between items-center w-full px-4 h-16 fixed top-0 z-50">
+<button aria-label="Menu" class="text-[#5A5A5A] hover:bg-[#F2F1ED] transition-all duration-200 active:scale-95 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="text-xl font-black text-[#8E3A1F] uppercase tracking-widest">Minha Culinária</h1>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-2 hidden md:inline-block">Diga "Próximo" ou "Voltar"</span>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-title-sm text-title-sm">
+                C
+            </div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-16 flex flex-col md:flex-row relative">
+<!-- Left Area: Current Step & Voice Control -->
+<div class="flex-1 p-margin-mobile md:p-margin-desktop flex flex-col justify-center relative overflow-y-auto">
+<!-- Voice Command Indicator -->
+<div class="absolute top-margin-mobile left-margin-mobile md:top-margin-desktop md:left-margin-desktop flex items-center gap-3 text-secondary bg-secondary-fixed px-4 py-2 rounded-full vault-shadow z-10">
+<span class="material-symbols-outlined animate-pulse" style="font-variation-settings: 'FILL' 1;">mic</span>
+<span class="font-label-caps text-label-caps uppercase">Ouvindo Comandos</span>
+</div>
+<!-- Progress -->
+<div class="mb-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-stats-numeric text-stats-numeric text-primary">Passo 3 <span class="text-outline">/ 8</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Boeuf Bourguignon</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/8"></div>
+</div>
+</div>
+<!-- Main Instruction -->
+<div class="bg-surface-container rounded-xl p-lg vault-shadow border border-outline-variant relative">
+<div class="absolute -top-6 -left-6 w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center font-stats-numeric text-stats-numeric shadow-md">
+                    3
+                </div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-md">Selar a Carne</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Aqueça 2 colheres de sopa de azeite na panela de ferro fundido em fogo alto. Seque os cubos de carne com papel toalha e tempere com sal e pimenta. Doure a carne em lotes, garantindo uma crosta escura em todos os lados.
+                </p>
+<!-- Ingredients for this step -->
+<div class="mt-lg pt-md border-t border-outline-variant flex flex-wrap gap-sm">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-sm font-label-caps text-label-caps uppercase flex items-center gap-1 border border-secondary-fixed-dim">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">egg_alt</span> Carne (1kg)
+                    </span>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-sm font-label-caps text-label-caps uppercase flex items-center gap-1 border border-secondary-fixed-dim">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">opacity</span> Azeite (2 c.s.)
+                    </span>
+</div>
+</div>
+<!-- Manual Navigation Controls (Fallback for voice) -->
+<div class="flex justify-between items-center mt-xl">
+<button class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-label-caps text-label-caps uppercase py-3 px-6 rounded border border-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+                    Anterior
+                </button>
+<button class="flex items-center gap-2 bg-primary text-on-primary hover:bg-primary-container transition-colors font-label-caps text-label-caps uppercase py-3 px-8 rounded shadow-md">
+                    Próximo
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Area: Timers & Tools Sidebar (Hidden on mobile, stacked on bottom otherwise. We'll make it a side panel on md) -->
+<div class="w-full md:w-96 bg-surface-container-low border-l border-surface-variant p-md flex flex-col gap-md overflow-y-auto">
+<h3 class="font-title-sm text-title-sm text-on-surface border-b border-surface-variant pb-2">Temporizadores Ativos</h3>
+<!-- Timer 1 (Active) -->
+<div class="bg-surface rounded-lg p-md vault-inset border border-outline-variant flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Dourar Carne (Lote 1)</span>
+<button aria-label="Stop Timer" class="text-error hover:text-error-container">
+<span class="material-symbols-outlined">stop_circle</span>
+</button>
+</div>
+<div class="flex items-baseline justify-center my-md text-[#d97706]"> <!-- Saffron Orange as per style guide for active timer -->
+<span class="font-stats-numeric text-display-lg text-[#d97706] tracking-tighter">03:45</span>
+</div>
+<div class="flex justify-center gap-4 mt-2 border-t border-surface-variant pt-3">
+<button class="text-on-surface-variant hover:text-primary flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-caps text-[10px] uppercase">+1 Min</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">pause</span>
+<span class="font-label-caps text-[10px] uppercase">Pausar</span>
+</button>
+</div>
+</div>
+<!-- Timer 2 (Waiting) -->
+<div class="bg-surface rounded-lg p-md border border-outline-variant flex flex-col opacity-70">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Redução Vinho</span>
+<button aria-label="Start Timer" class="text-primary hover:text-primary-container">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+<div class="flex items-baseline justify-center my-md">
+<span class="font-stats-numeric text-headline-md text-on-surface-variant tracking-tighter">15:00</span>
+</div>
+</div>
+<!-- Add new timer -->
+<button class="w-full py-3 border border-dashed border-outline text-outline hover:bg-surface-container transition-colors rounded-lg flex items-center justify-center gap-2 font-label-caps text-label-caps uppercase mt-auto">
+<span class="material-symbols-outlined">timer</span>
+                Novo Temporizador
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop, present on mobile for global navigation if needed, though 'Mãos na Massa' implies focus. We include it per rules but might be suppressed by pure focus intent. Let's keep it visible on mobile as requested by JSON structure) -->
+<nav class="md:hidden bg-[#FAF9F6] text-[#8E3A1F] font-['Epilogue'] text-[10px] font-semibold uppercase tracking-tighter docked full-width bottom-0 border-t border-t border-[#D2CFC9] shadow-[0_-2px_10px_rgba(0,0,0,0.05)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 bg-opacity-95 backdrop-blur-md">
+<a class="flex flex-col items-center justify-center text-[#A8A29E] pt-2 hover:text-[#8E3A1F] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">shelves</span>
+            Acervo
+        </a>
+<a class="flex flex-col items-center justify-center text-[#8E3A1F] border-t-2 border-[#8E3A1F] pt-2 hover:text-[#8E3A1F] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+            Mãos na Massa
+        </a>
+<a class="flex flex-col items-center justify-center text-[#A8A29E] pt-2 hover:text-[#8E3A1F] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+            Diário
+        </a>
+<a class="flex flex-col items-center justify-center text-[#A8A29E] pt-2 hover:text-[#8E3A1F] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+            Perfil
+        </a>
+</nav>
+</body></html>

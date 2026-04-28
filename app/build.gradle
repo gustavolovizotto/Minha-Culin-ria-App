@@ -42,6 +42,10 @@ dependencies {
     annotationProcessor libs.room.compiler
     implementation libs.navigation.fragment
     implementation libs.navigation.ui
+    implementation libs.camerax.core
+    implementation libs.camerax.camera2
+    implementation libs.camerax.lifecycle
+    implementation libs.camerax.view
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit

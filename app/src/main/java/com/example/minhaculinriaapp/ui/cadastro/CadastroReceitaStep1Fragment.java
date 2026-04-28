@@ -1,13 +1,17 @@
 package com.example.minhaculinriaapp.ui.cadastro;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -17,19 +21,33 @@ import androidx.navigation.Navigation;
 
 import com.example.minhaculinriaapp.R;
 import com.example.minhaculinriaapp.data.entity.Categoria;
+import com.example.minhaculinriaapp.ui.camera.CameraFragment;
+import com.example.minhaculinriaapp.ui.camera.FotoPickerBottomSheet;
 import com.example.minhaculinriaapp.viewmodel.CadastroReceitaViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.File;
 import java.util.List;
 
-public class CadastroReceitaStep1Fragment extends Fragment {
+public class CadastroReceitaStep1Fragment extends Fragment
+        implements FotoPickerBottomSheet.Listener {
 
     private CadastroReceitaViewModel viewModel;
     private TextInputLayout tilNome;
     private TextInputEditText etNome, etDescricao;
     private LinearLayout chipsContainer;
     private Long categoriaIdSelecionada = null;
+    private ImageView ivFoto;
+    private View layoutSemFoto;
+
+    private final ActivityResultLauncher<String> pickImageLauncher =
+            registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
+                if (uri != null) {
+                    viewModel.fotoPath = uri.toString();
+                    mostrarFoto(uri.toString());
+                }
+            });
 
     @Nullable
     @Override
@@ -42,23 +60,25 @@ public class CadastroReceitaStep1Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // ViewModel compartilhado com os outros passos (escopo Activity)
         viewModel = new ViewModelProvider(requireActivity()).get(CadastroReceitaViewModel.class);
 
         tilNome = view.findViewById(R.id.til_nome);
         etNome = view.findViewById(R.id.et_nome);
         etDescricao = view.findViewById(R.id.et_descricao);
         chipsContainer = view.findViewById(R.id.chips_categorias);
+        ivFoto = view.findViewById(R.id.iv_foto_receita);
+        layoutSemFoto = view.findViewById(R.id.layout_sem_foto);
 
-        // Restaurar dados do ViewModel se o usuário voltou
         if (viewModel.nome != null) etNome.setText(viewModel.nome);
         if (viewModel.descricao != null) etDescricao.setText(viewModel.descricao);
         categoriaIdSelecionada = viewModel.categoriaId;
 
-        // Carregar chips de categorias do banco
+        if (viewModel.fotoPath != null) mostrarFoto(viewModel.fotoPath);
+
         viewModel.categorias.observe(getViewLifecycleOwner(), this::popularChipsCategorias);
 
-        // "+ Nova" chip navega para cadastro de categoria
+        view.findViewById(R.id.area_foto).setOnClickListener(v -> mostrarPicker());
+
         view.findViewById(R.id.chip_nova_categoria).setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_step1_to_cadastro_categoria));
 
@@ -78,20 +98,48 @@ public class CadastroReceitaStep1Fragment extends Fragment {
             viewModel.categoriaId = categoriaIdSelecionada;
             Navigation.findNavController(v).navigate(R.id.action_step1_to_step2);
         });
+
+        getParentFragmentManager().setFragmentResultListener(
+                CameraFragment.RESULT_KEY, getViewLifecycleOwner(), (key, bundle) -> {
+                    String path = bundle.getString(CameraFragment.BUNDLE_PATH);
+                    if (path != null) {
+                        viewModel.fotoPath = path;
+                        mostrarFoto(path);
+                    }
+                });
+    }
+
+    private void mostrarPicker() {
+        FotoPickerBottomSheet sheet = FotoPickerBottomSheet.newInstance();
+        sheet.setListener(this);
+        sheet.show(getParentFragmentManager(), "foto_picker");
+    }
+
+    @Override
+    public void onEscolherCamera() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_step1_to_camera);
+    }
+
+    @Override
+    public void onEscolherGaleria() {
+        pickImageLauncher.launch("image/*");
+    }
+
+    private void mostrarFoto(String path) {
+        Uri uri = path.startsWith("content://")
+                ? Uri.parse(path)
+                : Uri.fromFile(new File(path));
+        ivFoto.setImageURI(uri);
+        ivFoto.setVisibility(View.VISIBLE);
+        layoutSemFoto.setVisibility(View.GONE);
     }
 
     private void popularChipsCategorias(List<Categoria> categorias) {
-        // Remove chips dinâmicos (mantém o chip "+ Nova" que é o último filho fixo do XML)
-        // O container_chips já tem os chips estáticos do XML, então limpamos e reconstruímos
-        // apenas os chips de categorias (antes do chip "+ Nova")
         View chipNova = chipsContainer.findViewWithTag("chip_nova");
         if (chipNova == null) {
-            // Primeira vez: marcar o chip "+ Nova" com tag e remover os chips estáticos do XML
-            // que foram colocados apenas como placeholder visual
             chipsContainer.removeAllViews();
             chipNova = requireView().findViewById(R.id.chip_nova_categoria);
         } else {
-            // Remover todos exceto o chip "+ Nova"
             for (int i = chipsContainer.getChildCount() - 2; i >= 0; i--) {
                 chipsContainer.removeViewAt(i);
             }
@@ -119,7 +167,6 @@ public class CadastroReceitaStep1Fragment extends Fragment {
             chipClicado.setTag(false);
         } else {
             categoriaIdSelecionada = catId;
-            // Desselecionar todos e selecionar o clicado
             for (int i = 0; i < chipsContainer.getChildCount() - 1; i++) {
                 View child = chipsContainer.getChildAt(i);
                 if (child instanceof TextView) {

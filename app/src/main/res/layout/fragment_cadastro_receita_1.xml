@@ -100,9 +100,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:background="@drawable/bg_dashed_border"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <LinearLayout
+                    android:id="@+id/layout_sem_foto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -125,6 +128,15 @@
                         android:textColor="@color/on_surface_variant"
                         android:paddingTop="4dp" />
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_foto_receita"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:contentDescription="Foto da receita" />
+
             </FrameLayout>
 
             <!-- Title input -->

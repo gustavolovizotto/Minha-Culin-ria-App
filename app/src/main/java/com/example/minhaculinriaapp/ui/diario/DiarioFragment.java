@@ -1,5 +1,6 @@
 package com.example.minhaculinriaapp.ui.diario;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -20,19 +21,23 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.minhaculinriaapp.R;
 import com.example.minhaculinriaapp.data.entity.Execucao;
 import com.example.minhaculinriaapp.data.entity.ReceitaResumida;
+import com.example.minhaculinriaapp.ui.camera.CameraFragment;
+import com.example.minhaculinriaapp.ui.camera.FotoPickerBottomSheet;
 import com.example.minhaculinriaapp.viewmodel.DiarioViewModel;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class DiarioFragment extends Fragment {
+public class DiarioFragment extends Fragment implements FotoPickerBottomSheet.Listener {
 
     private DiarioViewModel viewModel;
 
@@ -56,10 +61,7 @@ public class DiarioFragment extends Fragment {
             registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 if (uri != null) {
                     fotoPathAtual = uri.toString();
-                    ivFoto.setImageURI(uri);
-                    ivFoto.setVisibility(View.VISIBLE);
-                    layoutSemFoto.setVisibility(View.GONE);
-                    btnTrocarFoto.setVisibility(View.VISIBLE);
+                    mostrarFoto(fotoPathAtual);
                 }
             });
 
@@ -95,7 +97,6 @@ public class DiarioFragment extends Fragment {
         stars[3] = view.findViewById(R.id.star4);
         stars[4] = view.findViewById(R.id.star5);
 
-        // Today's date
         tvData.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("pt", "BR"))
                 .format(new Date()).toUpperCase());
 
@@ -103,7 +104,6 @@ public class DiarioFragment extends Fragment {
         setupPhotoCard(view);
         setupAddVariavel(view);
 
-        // Observe receitas for dropdown
         viewModel.receitas.observe(getViewLifecycleOwner(), receitas -> {
             listaReceitas = receitas != null ? receitas : new ArrayList<>();
             List<String> nomes = new ArrayList<>();
@@ -121,10 +121,18 @@ public class DiarioFragment extends Fragment {
             }
         });
 
-        // Observe execucoes for the selected recipe (evolution timeline)
         viewModel.execucoes.observe(getViewLifecycleOwner(), this::renderEvolucao);
 
         view.findViewById(R.id.btn_salvar_registro).setOnClickListener(v -> salvar());
+
+        getParentFragmentManager().setFragmentResultListener(
+                CameraFragment.RESULT_KEY, getViewLifecycleOwner(), (key, bundle) -> {
+                    String path = bundle.getString(CameraFragment.BUNDLE_PATH);
+                    if (path != null) {
+                        fotoPathAtual = path;
+                        mostrarFoto(path);
+                    }
+                });
     }
 
     private void setupStarRating() {
@@ -141,14 +149,39 @@ public class DiarioFragment extends Fragment {
         for (int i = 0; i < 5; i++) {
             stars[i].setTextColor(i < valor ? primaryColor : outlineColor);
         }
-        // vault score = nota * 2 (1-5 → 2-10)
         tvVaultScore.setText(valor == 0 ? "—" : String.valueOf(valor * 2));
     }
 
     private void setupPhotoCard(View view) {
         View cardFoto = view.findViewById(R.id.card_foto);
-        cardFoto.setOnClickListener(v -> pickImageLauncher.launch("image/*"));
-        btnTrocarFoto.setOnClickListener(v -> pickImageLauncher.launch("image/*"));
+        cardFoto.setOnClickListener(v -> mostrarPicker());
+        btnTrocarFoto.setOnClickListener(v -> mostrarPicker());
+    }
+
+    private void mostrarPicker() {
+        FotoPickerBottomSheet sheet = FotoPickerBottomSheet.newInstance();
+        sheet.setListener(this);
+        sheet.show(getParentFragmentManager(), "foto_picker");
+    }
+
+    @Override
+    public void onEscolherCamera() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_diario_to_camera);
+    }
+
+    @Override
+    public void onEscolherGaleria() {
+        pickImageLauncher.launch("image/*");
+    }
+
+    private void mostrarFoto(String path) {
+        Uri uri = path.startsWith("content://")
+                ? Uri.parse(path)
+                : Uri.fromFile(new File(path));
+        ivFoto.setImageURI(uri);
+        ivFoto.setVisibility(View.VISIBLE);
+        layoutSemFoto.setVisibility(View.GONE);
+        btnTrocarFoto.setVisibility(View.VISIBLE);
     }
 
     private void setupAddVariavel(View view) {
@@ -168,7 +201,6 @@ public class DiarioFragment extends Fragment {
                     : "Nenhuma tentativa registrada ainda");
             tvSemHistorico.setVisibility(View.VISIBLE);
 
-            // Update tentativa subtitle if recipe selected
             if (receitaIdSelecionada != -1) {
                 tvTentativa.setText("Tentativa #01 — Primeira vez");
             }
@@ -183,7 +215,7 @@ public class DiarioFragment extends Fragment {
         for (int i = 0; i < execucoes.size(); i++) {
             Execucao e = execucoes.get(i);
             boolean isMaisRecente = (i == 0);
-            int numero = execucoes.size() - i; // DESC list: i=0 is the most recent (highest #)
+            int numero = execucoes.size() - i;
 
             View row = buildTimelineRow(e, numero, isMaisRecente, sdf);
             containerEvolucao.addView(row);
@@ -198,7 +230,6 @@ public class DiarioFragment extends Fragment {
         outerParams.bottomMargin = dpToPx(20);
         outer.setLayoutParams(outerParams);
 
-        // Left: timeline dot + line
         LinearLayout leftCol = new LinearLayout(requireContext());
         leftCol.setOrientation(LinearLayout.VERTICAL);
         leftCol.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
@@ -214,7 +245,6 @@ public class DiarioFragment extends Fragment {
         dot.setLayoutParams(dotParams);
         leftCol.addView(dot);
 
-        // Vertical line below dot (except last entry)
         View line = new View(requireContext());
         line.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.outline_variant));
         LinearLayout.LayoutParams lineParams = new LinearLayout.LayoutParams(dpToPx(2),
@@ -226,13 +256,11 @@ public class DiarioFragment extends Fragment {
 
         outer.addView(leftCol);
 
-        // Right: content
         LinearLayout content = new LinearLayout(requireContext());
         content.setOrientation(LinearLayout.VERTICAL);
         content.setLayoutParams(new LinearLayout.LayoutParams(0,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
-        // Label chip
         TextView tvLabel = new TextView(requireContext());
         tvLabel.setText("TENTATIVA #" + String.format(Locale.getDefault(), "%02d", numero));
         tvLabel.setTextSize(10f);
@@ -248,7 +276,6 @@ public class DiarioFragment extends Fragment {
         }
         content.addView(tvLabel);
 
-        // Date
         TextView tvData = new TextView(requireContext());
         tvData.setText(sdf.format(new Date(e.data)).toUpperCase(Locale.getDefault()));
         tvData.setTextSize(11f);
@@ -256,13 +283,12 @@ public class DiarioFragment extends Fragment {
         tvData.setPadding(0, 0, 0, dpToPx(4));
         content.addView(tvData);
 
-        // Rating
         if (!TextUtils.isEmpty(e.nota)) {
             try {
                 float nota = Float.parseFloat(e.nota);
-                int stars = Math.round(nota);
+                int starCount = Math.round(nota);
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 5; i++) sb.append(i < stars ? "★" : "☆");
+                for (int i = 0; i < 5; i++) sb.append(i < starCount ? "★" : "☆");
                 sb.append("  ").append(String.format(Locale.getDefault(), "%.0f", nota * 2));
 
                 TextView tvNota = new TextView(requireContext());
@@ -304,7 +330,6 @@ public class DiarioFragment extends Fragment {
 
         viewModel.salvar(receitaIdSelecionada, nota, observacoes, fotoPathAtual);
 
-        // Reset form
         etFuncionou.setText("");
         etMelhoria.setText("");
         containerVariaveis.removeAllViews();

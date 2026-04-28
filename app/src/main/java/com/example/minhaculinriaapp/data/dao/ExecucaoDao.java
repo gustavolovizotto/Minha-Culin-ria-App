@@ -25,4 +25,7 @@ public interface ExecucaoDao {
 
     @Query("SELECT * FROM execucoes WHERE receita_id = :receitaId ORDER BY data DESC")
     LiveData<List<Execucao>> listarPorReceita(long receitaId);
+
+    @Query("SELECT COUNT(*) FROM execucoes")
+    LiveData<Integer> contarExecucoes();
 }

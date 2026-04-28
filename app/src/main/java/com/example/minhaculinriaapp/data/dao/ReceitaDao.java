@@ -43,4 +43,10 @@ public interface ReceitaDao {
            "FROM receitas r LEFT JOIN categorias c ON c.id = r.categoria_id " +
            "WHERE r.id = :id")
     LiveData<ReceitaResumida> buscarResumidaPorId(long id);
+
+    @Query("SELECT COUNT(*) FROM receitas")
+    LiveData<Integer> contarReceitas();
+
+    @Query("SELECT COALESCE(SUM(tempo_minutos), 0) FROM receitas")
+    LiveData<Integer> somarTempoMinutos();
 }

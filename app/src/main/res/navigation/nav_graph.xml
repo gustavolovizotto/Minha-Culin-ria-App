@@ -59,7 +59,15 @@
     <fragment
         android:id="@+id/diarioFragment"
         android:name="com.example.minhaculinriaapp.ui.diario.DiarioFragment"
-        android:label="@string/nav_diario" />
+        android:label="@string/nav_diario">
+        <action
+            android:id="@+id/action_diario_to_camera"
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/perfilFragment"
@@ -81,6 +89,13 @@
         <action
             android:id="@+id/action_step1_to_cadastro_categoria"
             app:destination="@id/cadastroCategoriaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_step1_to_camera"
+            app:destination="@id/cameraFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -112,6 +127,11 @@
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
     </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.minhaculinriaapp.ui.camera.CameraFragment"
+        android:label="Câmera" />
 
     <!-- Cadastro de Categoria -->
     <fragment

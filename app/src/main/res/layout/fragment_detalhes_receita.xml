@@ -234,7 +234,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="24dp" />
+
+            <Button
+                android:id="@+id/btn_iniciar_execucao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/primary"
+                android:text="▶  INICIAR MODO EXECUÇÃO"
+                android:textColor="@color/on_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:padding="14dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

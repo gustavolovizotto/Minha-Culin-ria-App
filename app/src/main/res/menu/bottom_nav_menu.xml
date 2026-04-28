@@ -7,11 +7,6 @@
         android:title="@string/nav_acervo" />
 
     <item
-        android:id="@+id/maosNaMassaFragment"
-        android:icon="@drawable/ic_nav_maos_massa"
-        android:title="@string/nav_maos_massa" />
-
-    <item
         android:id="@+id/diarioFragment"
         android:icon="@drawable/ic_nav_diario"
         android:title="@string/nav_diario" />

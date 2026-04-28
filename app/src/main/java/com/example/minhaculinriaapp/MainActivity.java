@@ -22,5 +22,13 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(bottomNav, navController);
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.maosNaMassaFragment) {
+                bottomNav.setVisibility(android.view.View.GONE);
+            } else {
+                bottomNav.setVisibility(android.view.View.VISIBLE);
+            }
+        });
     }
 }

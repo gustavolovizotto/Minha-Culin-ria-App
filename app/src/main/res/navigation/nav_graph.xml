@@ -38,12 +38,23 @@
         <argument
             android:name="receitaId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_detalhes_to_maos_massa"
+            app:destination="@id/maosNaMassaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/maosNaMassaFragment"
         android:name="com.example.minhaculinriaapp.ui.execucao.MaosNaMassaFragment"
-        android:label="@string/nav_maos_massa" />
+        android:label="@string/nav_maos_massa">
+        <argument
+            android:name="receitaId"
+            app:argType="long" />
+    </fragment>
 
     <fragment
         android:id="@+id/diarioFragment"

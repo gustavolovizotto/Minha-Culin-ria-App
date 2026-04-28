@@ -62,6 +62,15 @@ public class DetalhesReceitaFragment extends Fragment {
         view.findViewById(R.id.btn_back).setOnClickListener(v ->
                 Navigation.findNavController(v).navigateUp());
 
+        view.findViewById(R.id.btn_iniciar_execucao).setOnClickListener(v -> {
+            long receitaId = getArguments() != null ? getArguments().getLong("receitaId", -1) : -1;
+            if (receitaId != -1) {
+                Bundle args = new Bundle();
+                args.putLong("receitaId", receitaId);
+                Navigation.findNavController(v).navigate(R.id.action_detalhes_to_maos_massa, args);
+            }
+        });
+
         // Receber o ID passado pela navegação
         long receitaId = getArguments() != null ? getArguments().getLong("receitaId", -1) : -1;
         if (receitaId != -1) {

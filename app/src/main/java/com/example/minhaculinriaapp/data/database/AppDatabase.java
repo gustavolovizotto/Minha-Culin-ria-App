@@ -19,7 +19,7 @@ import com.example.minhaculinriaapp.data.entity.Receita;
 
 @Database(
     entities = {Categoria.class, Receita.class, Ingrediente.class, Passo.class, Execucao.class},
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {

@@ -106,11 +106,20 @@ public class CadastroReceitaStep2Fragment extends Fragment {
         for (int i = 0; i < containerPassos.getChildCount(); i++) {
             View row = containerPassos.getChildAt(i);
             TextInputEditText etDesc = row.findViewById(R.id.et_descricao_passo);
+            TextInputEditText etTempo = row.findViewById(R.id.et_tempo_passo);
             String desc = etDesc.getText() != null ? etDesc.getText().toString().trim() : "";
             if (!desc.isEmpty()) {
                 Passo p = new Passo();
                 p.numero = i + 1;
                 p.descricao = desc;
+                if (etTempo != null) {
+                    String tempoStr = etTempo.getText() != null
+                            ? etTempo.getText().toString().trim() : "";
+                    if (!tempoStr.isEmpty()) {
+                        try { p.tempoMinutos = Integer.parseInt(tempoStr); }
+                        catch (NumberFormatException ignored) {}
+                    }
+                }
                 lista.add(p);
             }
         }

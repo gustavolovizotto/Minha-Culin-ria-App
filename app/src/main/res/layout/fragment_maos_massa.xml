@@ -191,6 +191,16 @@
                             android:textColor="@color/on_surface_variant"
                             android:textSize="16sp" />
 
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_iniciar_timer"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Iniciar Timer"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="16dp"
+                            android:visibility="gone" />
+
                         <View
                             android:id="@+id/divider_chips"
                             android:layout_width="match_parent"

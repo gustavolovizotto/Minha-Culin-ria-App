@@ -1,8 +1,10 @@
 package com.example.minhaculinriaapp.ui.execucao;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -29,7 +31,10 @@ import androidx.navigation.Navigation;
 import com.example.minhaculinriaapp.R;
 import com.example.minhaculinriaapp.data.entity.Ingrediente;
 import com.example.minhaculinriaapp.data.entity.Passo;
+import com.example.minhaculinriaapp.service.TimerForegroundService;
 import com.example.minhaculinriaapp.viewmodel.MaosNaMassaViewModel;
+import com.example.minhaculinriaapp.widget.CofreWidget;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +52,12 @@ public class MaosNaMassaFragment extends Fragment {
     private HorizontalScrollView scrollChips;
     private LinearLayout containerChips;
     private Button btnAnterior, btnProximo;
+    private MaterialButton btnTimer;
 
     private SpeechRecognizer speechRecognizer;
     private Intent recognizerIntent;
     private boolean micPermissionGranted = false;
+    private boolean timerAtivo = false;
 
     private List<Passo> listaPassos = new ArrayList<>();
     private List<Ingrediente> listaIngredientes = new ArrayList<>();
@@ -63,6 +70,11 @@ public class MaosNaMassaFragment extends Fragment {
                 } else {
                     layoutVozChip.setVisibility(View.GONE);
                 }
+            });
+
+    private final ActivityResultLauncher<String> requestNotifPermission =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+                if (granted) startTimerService();
             });
 
     @Nullable
@@ -91,6 +103,9 @@ public class MaosNaMassaFragment extends Fragment {
         containerChips = view.findViewById(R.id.container_chips);
         btnAnterior = view.findViewById(R.id.btn_anterior);
         btnProximo = view.findViewById(R.id.btn_proximo);
+        btnTimer = view.findViewById(R.id.btn_iniciar_timer);
+
+        timerAtivo = isTimerRunning();
 
         viewModel = new ViewModelProvider(this).get(MaosNaMassaViewModel.class);
 
@@ -120,6 +135,21 @@ public class MaosNaMassaFragment extends Fragment {
 
         btnAnterior.setOnClickListener(v -> viewModel.voltar());
         btnProximo.setOnClickListener(v -> viewModel.avancar());
+
+        btnTimer.setOnClickListener(v -> {
+            if (timerAtivo) {
+                stopTimerService();
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                        && ContextCompat.checkSelfPermission(requireContext(),
+                                Manifest.permission.POST_NOTIFICATIONS)
+                                != PackageManager.PERMISSION_GRANTED) {
+                    requestNotifPermission.launch(Manifest.permission.POST_NOTIFICATIONS);
+                } else {
+                    startTimerService();
+                }
+            }
+        });
 
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.RECORD_AUDIO)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -155,6 +185,7 @@ public class MaosNaMassaFragment extends Fragment {
             cardPasso.setVisibility(View.GONE);
             btnAnterior.setEnabled(false);
             btnProximo.setEnabled(false);
+            btnTimer.setVisibility(View.GONE);
             return;
         }
 
@@ -178,6 +209,58 @@ public class MaosNaMassaFragment extends Fragment {
 
         btnAnterior.setEnabled(idx > 0);
         btnProximo.setEnabled(idx < total - 1);
+
+        atualizarBotaoTimer(passo);
+    }
+
+    private void atualizarBotaoTimer(Passo passo) {
+        if (timerAtivo) {
+            btnTimer.setVisibility(View.VISIBLE);
+            btnTimer.setText("Parar Timer");
+        } else {
+            int min = passo.tempoMinutos != null ? passo.tempoMinutos : 0;
+            if (min > 0) {
+                btnTimer.setVisibility(View.VISIBLE);
+                btnTimer.setText("Timer: " + min + " min");
+            } else {
+                btnTimer.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    private void startTimerService() {
+        int idx = viewModel.getIndice().getValue() != null ? viewModel.getIndice().getValue() : 0;
+        if (idx < 0 || idx >= listaPassos.size()) return;
+        Passo passo = listaPassos.get(idx);
+        int minutos = passo.tempoMinutos != null ? passo.tempoMinutos : 0;
+        if (minutos <= 0) return;
+
+        String receitaNome = viewModel.receita.getValue() != null
+                ? viewModel.receita.getValue().nome : "Receita";
+
+        Intent intent = new Intent(requireContext(), TimerForegroundService.class);
+        intent.setAction(TimerForegroundService.ACTION_START);
+        intent.putExtra(TimerForegroundService.EXTRA_MINUTOS, minutos);
+        intent.putExtra(TimerForegroundService.EXTRA_RECEITA_NOME, receitaNome);
+        intent.putExtra(TimerForegroundService.EXTRA_PASSO_NUMERO, passo.numero);
+
+        ContextCompat.startForegroundService(requireContext(), intent);
+        timerAtivo = true;
+        atualizarUI();
+    }
+
+    private void stopTimerService() {
+        Intent intent = new Intent(requireContext(), TimerForegroundService.class);
+        intent.setAction(TimerForegroundService.ACTION_STOP);
+        requireContext().startService(intent);
+        timerAtivo = false;
+        atualizarUI();
+    }
+
+    private boolean isTimerRunning() {
+        return requireContext()
+                .getSharedPreferences(CofreWidget.PREFS_WIDGET, Context.MODE_PRIVATE)
+                .contains(CofreWidget.KEY_TIMER_LABEL);
     }
 
     private void renderIngredientChips() {

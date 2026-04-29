@@ -27,4 +27,7 @@ public class Passo {
     public int numero;
 
     public String descricao;
+
+    @ColumnInfo(name = "tempo_minutos")
+    public Integer tempoMinutos;
 }
